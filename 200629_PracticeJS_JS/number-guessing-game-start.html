@@ -1,0 +1,155 @@
+<!--
+    200629_숫자맞추기
+
+    게임설명: 나는 간단하게 숫자 맞추기 게임을 만들고 싶다.
+    1과 100사의 수 중에서 무작위로 선택하고, 플레이어는 10번의 기회 안에 그 숫자를 맞춰야 한다. 
+    각 순서마다 숫자를 맞춰는지 틀렸는지는 당연히 알려줘야 하고, 틀렸다면 큰지 작은지도 포함해서 말해야 한다.
+    또한 이전에 써냈던 번호들도 보여줘야 한다. 게임은 플레이어가 숫자를 맞추던가, 기회를 모두 소진하면 끝나게 된다. 
+    게임이 끝나면 플레이어가 다시 게임을 할 것인지 묻게된다.
+
+-->
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+
+    <title>Number guessing game</title>
+
+    <style>
+      html {
+        font-family: sans-serif;
+      }
+
+      body {
+        width: 50%;
+        max-width: 800px;
+        min-width: 480px;
+        margin: 0 auto;
+      }
+
+      .lastResult {
+        color: white;
+        padding: 3px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Number guessing game</h1>
+
+    <p>We have selected a random number between 1 and 100. See if you can guess it in 10 turns or fewer. We'll tell you if your guess was too high or too low.</p>
+
+    <!--입력값을 받는 구간-->
+    <div class="form">
+      <label for="guessField">Enter a guess: </label><input type="text" id="guessField" class="guessField">
+      <input type="submit" value="Submit guess" class="guessSubmit">
+    </div>
+
+    <!--사용자 입력에 따른 출력구간이므로 default로 어떤 출력값도 없다-->
+    <div class="resultParas">
+      <p class="guesses"></p>
+      <p class="lastResult"></p>
+      <p class="lowOrHi"></p>
+    </div>
+
+    <script>
+        // 1 ~ 100 사이의 수 중 무작위 지정
+        var randomNumber = Math.floor(Math.random() * 100) + 1;
+
+        // HTML tag 중 class 기준으로 선택하여 JS 변수와 매칭
+        var guesses = document.querySelector('.guesses');
+        var lastResult = document.querySelector('.lastResult');
+        var lowOrHi = document.querySelector('.lowOrHi');
+        
+        // 입력값 받는 tag에 대해 JS 변수와 매칭
+        var guessSubmit = document.querySelector('.guessSubmit');
+        var guessField = document.querySelector('.guessField');
+        
+        // 사용자 입력값 추측 개수 저장
+        var guessCount = 1;
+        var resetButton;
+
+        function checkGuess() {
+        // guessField(사용자 입력값과 매칭된 JS 변수)의 값에 대해 정수화한 후(Number 메소드를 사용) userGuess에 저장 
+        var userGuess = Number(guessField.value);
+        if (guessCount === 1) {
+            guesses.textContent = 'Previous guesses: ';
+        }
+        // 추측 개수에 대해 출력 
+        // 아래 코드는 다음의 코드를 축약한 것이다. guess.textContent = guess.textContent + userGuess + ' '
+        // 다시 말해 매턴마다 입력되는 userGuess를 축적하여 출력하는 모양임
+        guesses.textContent += userGuess + ' ';
+        
+        // 사용자 입력값과 정닶이 같을 경우
+        if (userGuess === randomNumber) {
+            // 정답 인지창 출력
+            lastResult.textContent = 'Congratulations! You got it right!';
+            lastResult.style.backgroundColor = 'green';
+            lowOrHi.textContent = '';
+            // 게임 재실행 관련 함수
+            setGameOver();
+        // 추측 제한에 걸린 경우
+        } else if (guessCount === 10) {
+            lastResult.textContent = '!!!GAME OVER!!!';
+            setGameOver();
+        } else {
+            // 오답 인지창 출력
+            lastResult.textContent = 'Wrong!';
+            lastResult.style.backgroundColor = 'red';
+            if(userGuess < randomNumber) {
+            lowOrHi.textContent = 'Last guess was too low!';
+            } else if(userGuess > randomNumber) {
+            lowOrHi.textContent = 'Last guess was too high!';
+            }
+        }
+        
+        guessCount++;
+        // 입력창 공란 만듬
+        guessField.value = '';
+        // 입력창에 마우스 커서 이동
+        guessField.focus();
+        }
+
+        // 이벤트리스너란 이벤트 발생 시, 관련 처리
+        // 이벤트핸들러란 이벤트 처리 코드 블록 
+        guessSubmit.addEventListener('click', checkGuess);
+
+        function setGameOver() {
+        // 게임 종료 후 입력값 제출 방지를 위해 입력창과 관련 버튼을 disable
+        guessField.disabled = true;
+        guessSubmit.disabled = true;
+
+        // 게임 재실행 관련 document에 button 추가 
+        resetButton = document.createElement('button');
+        resetButton.textContent = 'Start new game';
+        document.body.appendChild(resetButton);
+        // 
+        resetButton.addEventListener('click', resetGame);
+        }
+
+        function resetGame() {
+        guessCount = 1;
+
+        // resultParas(div 태그) 내 p 태그에 하나씩 접근하여 내용제거
+        var resetParas = document.querySelectorAll('.resultParas p');
+        for (var i = 0 ; i < resetParas.length ; i++) {
+            resetParas[i].textContent = '';
+        }
+
+        resetButton.parentNode.removeChild(resetButton);
+
+        guessField.disabled = false;
+        guessSubmit.disabled = false;
+        guessField.value = '';
+        guessField.focus();
+
+        lastResult.style.backgroundColor = 'white';
+
+        randomNumber = Math.floor(Math.random() * 100) + 1;
+        }
+
+    </script>
+  </body>
+</html>

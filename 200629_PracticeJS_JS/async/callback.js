@@ -34,18 +34,18 @@ class UserStorage {
             } else {
                 onError(new Error('not found'));
             }
-        }, 2000); 
+        }, 2000);
     }
 
     getRoles(user, onSuccess, onError) {
         setTimeout(() => {
             // 아래의 user의 값은 어디에서 받는가?
             if (user === 'ellie') {
-                onSuccess({ name: 'ellie', role: 'admin'});
+                onSuccess({ name: 'ellie', role: 'admin' });
             } else {
                 onError(new Error('no access'));
             }
-        }, 1000);       
+        }, 1000);
     }
 }
 
@@ -53,7 +53,7 @@ const userStorage = new UserStorage();
 const id = prompt('enter id');
 const password = prompt('enter your password');
 userStorage.loginUser(
-    id, 
+    id,
     password,
     user => {
         userStorage.getRoles(

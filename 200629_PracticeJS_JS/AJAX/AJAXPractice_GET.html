@@ -9,11 +9,9 @@
   <button id="ajaxButton" type="button">Make a request</button>
   <script>
     (function () {
-      // 아래 형식을 바꿔보자, 내가 배운걸로
       var httpRequest;
-      document.getElementById("ajaxButton").addEventListener('click', makeRequest);
-
-      function makeRequest() {
+      document.getElementById("ajaxButton").addEventListener('click', () => {
+        // 이벤트 발생 시 XMLHttpRequest의 인스턴스 생성
         httpRequest = new XMLHttpRequest();
 
         if (!httpRequest) {
@@ -21,14 +19,17 @@
           return false;
         }
 
-        // ?? 서버의 응답을 처리하기 위한 함수 생성
+        // response 받을 시 요청에 대한 상태(5단계)가 변하면 alertContents가 호출됨
         httpRequest.onreadystatechange = alertContents;
         httpRequest.open('GET', 'test.html');
         httpRequest.send();
-      }
+      });
 
       function alertContents() {
+        console.log("alertContents 호출", httpRequest.readyState, httpRequest.state);
+        // Request 상태 확인 / readyState가 마지막 단계 complete이 될 경우가 참(= full server response was received)
         if (httpRequest.readyState === XMLHttpRequest.DONE) {
+          // HTTP response 상태가 확인 / status가 ok인 경우가 참
           if (httpRequest.status === 200) {
             alert(httpRequest.responseText);
           }
@@ -36,7 +37,7 @@
             alert('request 문제 발생');
           }
         }
-      }
+      };
     })();
   </script>
 </body>

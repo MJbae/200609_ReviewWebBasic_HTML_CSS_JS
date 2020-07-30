@@ -1,0 +1,48 @@
+<html>
+
+<head>
+  <title>AJAX Practice</title>
+  <meta charset="utf-8" />
+</head>
+
+<body>
+  <button id="ajaxButton" type="button">Make a request</button>
+  <script>
+    (function () {
+      var httpRequest;
+      document.getElementById("ajaxButton").addEventListener('click', () => {
+        // 이벤트 발생 시 XMLHttpRequest의 인스턴스 생성
+        httpRequest = new XMLHttpRequest();
+
+        if (!httpRequest) {
+          alert('XMLHttpRequest 인스턴스 미생성');
+          return false;
+        }
+
+        // response 받을 시 요청에 대한 상태(5단계)가 변하면 alertContents가 호출됨
+        httpRequest.onreadystatechange = alertContents;
+        console.log('GET');
+        httpRequest.open('GET', 'test.xml');
+        httpRequest.send();
+      });
+
+      function alertContents() {
+        console.log("alertContents 호출", httpRequest.readyState, httpRequest.state);
+        // Request 상태 확인 / readyState가 마지막 단계 complete이 될 경우가 참(= full server response was received)
+        if (httpRequest.readyState === XMLHttpRequest.DONE) {
+          // HTTP response 상태가 확인 / status가 ok인 경우가 참
+          if (httpRequest.status === 200) {
+            var xmldoc = httpRequest.responseXML;
+            var root_node = xmldoc.getElementsByTagName('root').item(0);
+            alert(root_node.firstChild.data);
+          }
+          else {
+            alert('request 문제 발생');
+          }
+        }
+      };
+    })();
+  </script>
+</body>
+
+</html>

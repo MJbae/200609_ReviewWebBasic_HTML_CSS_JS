@@ -1,0 +1,26 @@
+{
+	"folders": [
+		{
+			"name": "움짤검색기",
+			"path": "..\\..\\..\\200620_PlayGames_JS\\움짤검색기"
+		},
+		{
+			"name": "TodoListBasic",
+			"path": "..\\..\\..\\200620_PlayGames_JS\\TodoList\\TodoListBasic"
+		},
+		{
+			"name": "TodoListUpgrade",
+			"path": "..\\..\\..\\200620_PlayGames_JS\\TodoList\\TodoListUpgrade"
+		},
+		{
+			"path": "..\\..\\..\\prgrms-fejs\\mission3\\7th\\gentleman"
+		},
+		{
+			"path": "..\\..\\..\\200629_PracticeJS_JS\\async"
+		},
+		{
+			"path": "."
+		}
+	],
+	"settings": {}
+}

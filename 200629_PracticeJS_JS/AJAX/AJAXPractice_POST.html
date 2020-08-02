@@ -1,0 +1,53 @@
+<html>
+
+<head>
+  <title>AJAX Practice</title>
+  <meta charset="utf-8" />
+</head>
+
+<body>
+  <label>당신의 이름을 입력해주세요 :
+    <input type="text" id="ajaxTextbox" />
+  </label>
+  <span id="ajaxButton" style="cursor: pointer; text-decoration: underline">
+    Make a request
+  </span>
+  <script>
+    (function () {
+      var httpRequest;
+      document.getElementById("ajaxButton").onclick = function () {
+        var userName = document.getElementById("ajaxTextbox").value;
+        makeRequest('test.php', userName);
+      };
+
+      function makeRequest(url, userName) {
+        httpRequest = new XMLHttpRequest();
+
+        if (!httpRequest) {
+          alert('XMLHTTP 인스턴스를 만들 수가 없어요 ㅠㅠ');
+          return false;
+        }
+        httpRequest.onreadystatechange = alertContents;
+        httpRequest.open('POST', url);
+        // POST 형태로 데이터 전송 시 send 호출 전 아래와 같이 MIME type 설정 
+        httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        // 전송할 데이터를 encoding, 브라우저에 따라 한글 전송 시 비정상 작동 가능
+        httpRequest.send('userName=' + encodeURIComponent(userName));
+      }
+
+      function alertContents() {
+        console.log("alertContents 호출", httpRequest.readyState, httpRequest.state);
+        if (httpRequest.readyState === XMLHttpRequest.DONE) {
+          if (httpRequest.status === 200) {
+            var response = JSON.parse(httpRequest.responseText);
+            alert(response.computedString);
+          } else {
+            alert('request에 뭔가 문제가 있어요.');
+          }
+        }
+      }
+    })();
+  </script>
+</body>
+
+</html>

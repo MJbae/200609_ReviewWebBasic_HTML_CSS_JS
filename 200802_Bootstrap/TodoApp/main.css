@@ -80,16 +80,13 @@
 
 /* HEADER */
 header {
-  border-bottom: 1px solid rgba(0,0,0,0.75);
-  box-shadow: 0 0 5px rgba(0,0,0,0.75);
-  /* 브라우저별 색상속성의 텍스트를 읽는 방법이 다르므로 16진수표현 권장 */
-  background: #fff;
+  background: #346fef;
 }
 header .inner{
   /* header가 아닌 header .inner에 height을 삽입하는 이유는 
   height의 default는 auto이므로 지식요소에 height을 추가함으로써 자동으로 부모요소에
   같은 높이가 추가됨 */
-  height: 78px;
+  height: 48px;
   /* 아래 두 가지 속성에 따라 수평적 가운데 정렬 가능, 반드시 width가 정의되어야 의도대로 기능 */
   max-width: 980px;
   margin: 0 auto;
@@ -105,16 +102,11 @@ header .menu-group{
 header .logo{
   margin-right: 10px;
 }
-header .logo a{
-  background: url("../img/logo.svg");
-  width: 32px;
-  height: 32px;
+header .logo a span{  
   display: block;
-  /* html로 삽입한 text는 img의 대체요소가 됨으로 제거하지 않고 text를 밀어버림 */
-  text-indent: -9999px;
-}
-header .logo a:hover{
-  background: url("../img/logo_on.svg");
+  /* a 태그 영역을 4방위에서 10px 늘림으로써 UX 향상 */
+  padding: 10px;
+  color: #fff;
 }
 header .main-menu{
   display: flex;
@@ -124,5 +116,5 @@ header .main-menu li a{
   display: block;
   /* a 태그 영역을 4방위에서 10px 늘림으로써 UX 향상 */
   padding: 10px;
-  color: #3c4146;
+  color: #fff;
 }

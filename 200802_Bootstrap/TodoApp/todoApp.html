@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>할 일 - To Do</title>
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1, minimum-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="icon" type="image/x-icon" href="https://ow2.res.office365.com/todo/267191_2.23.1/favicon.ico">
+  <!--google fonts에서 roboto font 사용 설정-->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <!--reset.css cdn 적용에 따라 브라우저별 초기값 reset-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.css">
+  <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+  <!--BEM(block element modifier)을 CSS 작명규칙으로 사용
+  __: ~의 구조적 일부분 // --: ~의 상태 ex) btn-danger, btn-warning // -: 일반적인 작명 ex) toggle-btn  -->
+  <div class="body__container">
+    <!-- HEADER -->
+    <!-- section이라는 class 적용에 따라 태그에 관계없이 공통된 style 적용 가능 -->
+    <header class="section">
+      <div class="inner">
+
+        <div class="menu-group">
+          <div class="logo">
+            <a href="#">GitHub</a>
+          </div>
+          <!-- menu 안에는 ul-li 관계로 정리하는 것을 권장 -->
+          <ul class="main-menu">
+            <li><a href="#">Personal</a></li>
+            <li><a href="#">Open source</a></li>
+            <li><a href="#">Business</a></li>
+            <li><a href="#">Explore</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+
+    </header>
+
+  </div>
+</body>
+
+</html>

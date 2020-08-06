@@ -21,8 +21,9 @@
 
     <!-- HEADER -->
     <header class="section">
-      <div class="inner">
-        <div class="menu-group">
+      <div class="inner clearfix">
+
+        <div class="menu-group float--left">
           <div class="logo">
             <a href="#">
               <span class="glyphicon glyphicon-th" aria-hidden="true"></span>
@@ -32,9 +33,66 @@
             <li><a href="#">To Do</a></li>
           </ul>
         </div>
-      </div>
 
+        <div class="search-group float--left">
+          <div class="input-button">
+            <a href="#">
+              <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+            </a>
+          </div>
+          <form id="search-form" method="POST" action="">
+            <input type="text" id="search" class="input--text" placeholder="검색">
+            <input type="submit" value="submit">
+          </form>
+          <div class="end-button">
+            <a href="#">
+              <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+            </a>
+          </div>
+        </div>
+
+        <div class="setting-group float--right">
+          <ul class="sub-menu">
+            <li><a href="#"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span></a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span></a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span></a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></li>
+          </ul>
+        </div>
+
+      </div>
     </header>
+
+    <section class="section section--visual">
+      <div class="inner">
+
+        <div class="todo-bar">
+          <div class="bar-icon"><a href="#">아이콘</a></div>
+          <ul>
+            <li><a href="#"><span>아이콘</span>오늘 할 일</a></li>
+            <li><a href="#"><span>아이콘</span>오늘 할 일</a></li>
+            <li><a href="#"><span>아이콘</span>오늘 할 일</a></li>
+            <li><a href="#"><span>아이콘</span>오늘 할 일</a></li>
+          </ul>
+        </div>
+
+        <div class="todo-list">
+          <div class="todo-title"></div>
+          <div class="list-icon"><a href="#">할 일 아이콘</a></div>
+          <ul>
+            <li><a href="#">아이콘</a> 작업추가</li>
+            <li><input type="checkbox"> 밥 먹기</li>
+            <li><input type="checkbox"> 운동하기</li>
+            <li><input type="checkbox"> 공부하기</li>
+            <li><input type="checkbox"> 운동하기</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+
+
   </div>
 </body>
 

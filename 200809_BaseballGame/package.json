@@ -4,9 +4,14 @@
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
+    "eslint": "^7.6.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-react": "^7.20.5",
+    "parcel-bundler": "^1.12.4",
     "prettier": "^2.0.5"
   },
   "scripts": {
-    "format": "prettier --write \"./**/*.{js,html,css}\""
+    "format": "prettier --write \"./**/*.{js,html,css}\"",
+    "dev": "parcel index.html game.html game-list.html new-game.html"
   }
 }

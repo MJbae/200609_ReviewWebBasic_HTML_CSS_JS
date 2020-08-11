@@ -6,7 +6,7 @@
 * '20. 6. 20.(토) ~ 
 
 ## 개발환경
-### 
-* JS, HTML, CSS
+### 개발언어
+* Vanilla JS, HTML, CSS
 ### 배포방법
 * Netlify

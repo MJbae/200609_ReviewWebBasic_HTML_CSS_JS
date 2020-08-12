@@ -3,7 +3,7 @@ const Counter = (() => {
   const VALUE = Symbol();
   return class {
     constructor(id) {
-      // TODO: this[VALUE] 이것이 가리키는 것은? 무슨 문법?
+      // TODO: this[VALUE], this[] 문법의 의미는?
       this[VALUE] = 1;
       this.container = document.getElementById(id);
       if (this.container === null) throw Error(id + ' 찾을 수 없습니다.');

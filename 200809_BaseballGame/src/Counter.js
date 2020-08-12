@@ -32,11 +32,11 @@ const counter = new Counter('digit-number');
 document.getElementById('minus-btn').addEventListener('click', (e) => counter.decrease());
 document.getElementById('plus-btn').addEventListener('click', (e) => counter.increase());
 document.getElementById('start-btn').addEventListener('click', (e) => {
-  // TODO: 아래 메소드는 이벤트 취소 역할이라는데 왜 사용한거지?
+  // 본 이벤트 취소(미사용 시 counter.value 값이 안넘어감 TODO: 왜??)
   e.preventDefault();
-  // 상위요소로 본 이벤트 전파 차단
+  // 상위요소로 본 이벤트 전파 차단(미사용 시, 위의 두 버튼이 사라짐 TODO: 왜??)
   e.stopPropagation();
-  // TODO: game.html에서 digit 값은 어떻게 받지?
+  // TODO: game.html에서 digit 값은 받는 원리는?
   location.assign(`game.html?digit=${counter.value}`);
 });
 

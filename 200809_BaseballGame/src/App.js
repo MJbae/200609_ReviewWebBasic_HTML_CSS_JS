@@ -1,3 +1,47 @@
+class Baseball {
+  constructor(digit = 3) {
+    this.digit = digit;
+    this.problem = this.makeProblem(digit);
+  }
+
+  makeProblem() {}
+
+  getResult(guess) {
+    let strike = 0,
+      ball = 0;
+
+    this.problem.forEach((v, i) => {
+      if (guess[i] === v) {
+        strike++;
+      } else if (this.problem.indexOf(guess[i]) > -1) {
+        ball++;
+      }
+    });
+
+    return new GameResult(this.digit, strike, ball);
+  }
+}
+
+class GameResult {
+  constructor(digit, strike, ball) {
+    this.digit = digit;
+    this.strike = strike;
+    this.ball = ball;
+  }
+
+  isDone() {
+    return this.ball === 0 && this.strike === this.digit;
+  }
+
+  toString() {
+    let resultString = '${this.strike}S${this.ball}B';
+    if (this.strike === 0 && this.ball === 0) {
+      resultString = 'OUT';
+    }
+    return resultString;
+  }
+}
+
 class GuessInputControl {
   constructor(containerSelector, { callback = function () {}, digitNumber = 3 } = {}) {
     this.inputEl = document.querySelector(containerSelector);
@@ -30,9 +74,13 @@ class App {
     const queryParam = new URLSearchParams(location.search);
     this.digit = queryParam.get('digit');
     this.inputControl = new GuessInputControl('#guess', {
+      // TODO: bind 이해
       callback: this.handleGuess.bind(this),
       digitNumber: this.digit,
     });
+    this.baseball = new Baseball(this.digit);
+    console.log(this.baseball.problem);
+    this.resultsContainerEl = document.querySelector('.result-container');
   }
 
   handleGuess(values, error) {
@@ -40,7 +88,23 @@ class App {
       alert(error.message);
       return;
     }
-    console.log(values);
+    const result = this.baseball.getResult(values);
+    this.resultsContainerEl.insertAdjacentHTML('beforeend', this.createResultEl(values, result.toString()));
+    if (result.isDone()) {
+      alert('정답을 맞췄습니다.');
+      this.resetGame();
+    }
+  }
+
+  resetGame() {
+    this.inputControl.disable('정답을 맞췄습니다.');
+  }
+
+  createResultEl(guess, result) {
+    return `<li class="list-group-item">
+            <span class="guess">${guess}</span>
+            <span class="badge result">${result}</span>
+            </li>`;
   }
 }
 

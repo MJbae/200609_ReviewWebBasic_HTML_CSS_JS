@@ -4,7 +4,9 @@ class Baseball {
     this.problem = this.makeProblem(digit);
   }
 
-  makeProblem() {}
+  makeProblem(inputDigit) {
+    return [1, 1, 1];
+  }
 
   getResult(guess) {
     let strike = 0,
@@ -30,11 +32,11 @@ class GameResult {
   }
 
   isDone() {
-    return this.ball === 0 && this.strike === this.digit;
+    return this.ball == 0 && this.strike == this.digit;
   }
 
   toString() {
-    let resultString = '${this.strike}S${this.ball}B';
+    let resultString = `${this.strike}S${this.ball}B`;
     if (this.strike === 0 && this.ball === 0) {
       resultString = 'OUT';
     }
@@ -64,6 +66,10 @@ class GuessInputControl {
       }
     });
   }
+  disable(message) {
+    this.inputEl.disabled = true;
+    this.inputEl.placeholder = message;
+  }
   clear() {
     this.inputEl.value = '';
   }
@@ -74,7 +80,6 @@ class App {
     const queryParam = new URLSearchParams(location.search);
     this.digit = queryParam.get('digit');
     this.inputControl = new GuessInputControl('#guess', {
-      // TODO: bind 이해
       callback: this.handleGuess.bind(this),
       digitNumber: this.digit,
     });
@@ -91,21 +96,20 @@ class App {
     const result = this.baseball.getResult(values);
     this.resultsContainerEl.insertAdjacentHTML('beforeend', this.createResultEl(values, result.toString()));
     if (result.isDone()) {
-      alert('정답을 맞췄습니다.');
+      alert('정답을 맞추었습니다!');
       this.resetGame();
     }
   }
 
   resetGame() {
-    this.inputControl.disable('정답을 맞췄습니다.');
+    this.inputControl.disable('정답을 맞추었습니다!');
   }
 
   createResultEl(guess, result) {
     return `<li class="list-group-item">
-            <span class="guess">${guess}</span>
-            <span class="badge result">${result}</span>
+              <span class="guess">${guess}</span>
+              <span class="badge result">${result}</span>
             </li>`;
   }
 }
-
 new App();

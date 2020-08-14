@@ -4,8 +4,16 @@ class Baseball {
     this.problem = this.makeProblem(digit);
   }
 
-  makeProblem(inputDigit) {
-    return [1, 1, 1];
+  getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  makeProblem(digit) {
+    let resultProblem = [];
+    for (let i = 0; i < digit; i++) {
+      resultProblem.push(this.getRandomInt(1, 9));
+    }
+    return resultProblem;
   }
 
   getResult(guess) {

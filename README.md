@@ -1,5 +1,5 @@
 # 200609_ReviewWebBasic_HTML_CSS_JS
-> 웹기본 학습을 위한 다수 토이프로젝트
+> 웹기본 학습을 위한 ㅇToy-Projects
 ### [200809_BaseballGame 바로가기](#)
 ### [200720_TodoList 바로가기](#)
 ### [200620_PlayGames 바로가기](https://playgames.netlify.app/)

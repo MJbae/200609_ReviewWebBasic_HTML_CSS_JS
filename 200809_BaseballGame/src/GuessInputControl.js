@@ -8,9 +8,10 @@ class GuessInputControl {
 
     this.inputEl.addEventListener('keydown', (e) => {
       if (e.keyCode === 13) {
+        // 문자열을 배열화 한 후 각각의 문자를 숫자로 변환
         const values = Array.from(e.target.value).map((v) => Number(v));
         if (values.length != digitNumber) {
-          // App 내 선언된 handleGuess를 사용하기 위해 call(null) 사용
+          // App 내 선언된 handleGuess를 사용하기 위해 call(null) 사용(this를 global object로 치환)
           callback.call(null, [], new Error('자릿수가 맞지 않습니다.'));
           return;
         }

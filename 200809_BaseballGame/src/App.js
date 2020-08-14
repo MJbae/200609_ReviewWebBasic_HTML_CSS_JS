@@ -1,5 +1,5 @@
 class GuessInputControl {
-  constructor(containerSelector, digitNumber = 3) {
+  constructor(containerSelector, { callback = function () {}, digitNumber = 3 } = {}) {
     this.inputEl = document.querySelector(containerSelector);
 
     if (this.inputEl === null) {
@@ -10,10 +10,12 @@ class GuessInputControl {
       if (e.keyCode === 13) {
         const values = Array.from(e.target.value).map((v) => Number(v));
         if (values.length != digitNumber) {
-          throw Error('자릿수가 맞지 않습니다.');
+          // App 내 선언된 handleGuess를 사용하기 위해 call(null) 사용
+          callback.call(null, [], new Error('자릿수가 맞지 않습니다.'));
+          return;
         }
-        console.log(values);
         this.clear();
+        callback.call(null, values);
         return;
       }
     });
@@ -26,8 +28,19 @@ class GuessInputControl {
 class App {
   constructor() {
     const queryParam = new URLSearchParams(location.search);
-    this.digit = queryParam('digit');
-    this.inputControl = new GuessInputControl('#guess', this.digit);
+    this.digit = queryParam.get('digit');
+    this.inputControl = new GuessInputControl('#guess', {
+      callback: this.handleGuess.bind(this),
+      digitNumber: this.digit,
+    });
+  }
+
+  handleGuess(values, error) {
+    if (error) {
+      alert(error.message);
+      return;
+    }
+    console.log(values);
   }
 }
 

@@ -1,10 +1,11 @@
-// TODO: 왜 즉시실행함수를 사용한 걸까?
+// TODO: class Counter가 아닌 즉시 실행함수를 사용한 이유는?
 const Counter = (() => {
   // Symbal 사용 목적: unique value 생성
   const VALUE = Symbol();
+
   return class {
     constructor(id) {
-      // TODO: this[VALUE], this[] 문법의 의미는?
+      // TODO: this.VALUE 대신 this[VALUE] 사용한 이유는?
       this[VALUE] = 1;
       this.container = document.getElementById(id);
       if (this.container === null) throw Error(id + ' 찾을 수 없습니다.');
@@ -33,10 +34,7 @@ const counter = new Counter('digit-number');
 document.getElementById('minus-btn').addEventListener('click', (e) => counter.decrease());
 document.getElementById('plus-btn').addEventListener('click', (e) => counter.increase());
 document.getElementById('start-btn').addEventListener('click', (e) => {
-  // 본 이벤트 취소(미사용 시 counter.value 값이 안넘어감 TODO: 왜??)
   e.preventDefault();
-  // 상위요소로 본 이벤트 전파 차단(미사용 시, 위의 두 버튼이 사라짐 TODO: 왜??)
   e.stopPropagation();
-  // TODO: game.html에서 digit 값 받는 원리는?
   location.assign(`game.html?digit=${counter.value}`);
 });

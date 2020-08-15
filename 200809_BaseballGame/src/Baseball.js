@@ -19,9 +19,11 @@ class Baseball {
     let strike = 0,
       ball = 0;
 
+    // 입력값과 정답 간 비교하여 strike와 ball counting
     this.problem.forEach((v, i) => {
       if (guess[i] === v) {
         strike++;
+        // strike가 아닌 입력값 중 정답의 요소와 값이 같은 경우 ball
       } else if (this.problem.indexOf(guess[i]) > -1) {
         ball++;
       }

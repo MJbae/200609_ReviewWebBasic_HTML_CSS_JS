@@ -4,14 +4,19 @@
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
+    "@types/jest": "^26.0.10",
+    "babel-eslint": "^10.1.0",
     "eslint": "^7.6.0",
     "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-jest": "^23.20.0",
     "eslint-plugin-react": "^7.20.5",
+    "jest": "^26.4.0",
     "parcel-bundler": "^1.12.4",
     "prettier": "^2.0.5"
   },
   "scripts": {
     "format": "prettier --write \"./**/*.{js,html,css}\"",
-    "dev": "parcel index.html game.html game-list.html new-game.html"
+    "dev": "parcel index.html game.html game-list.html new-game.html",
+    "test": "jest"
   }
 }

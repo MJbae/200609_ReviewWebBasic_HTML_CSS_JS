@@ -5,8 +5,9 @@ class App {
   constructor() {
     const queryParam = new URLSearchParams(location.search);
     this.digit = queryParam.get('digit');
+
     this.inputControl = new GuessInputControl('#guess', {
-      // TODO: bind의 역할: handleGuess 메소드를 객체 GuessInputControl과 바인딩
+      // TODO: bind의 기능은? handleGuess 메소드를 객체 App과 바인딩
       // 만약 bind 없이 handleGuess를 callback으로 설정 한다면??
       callback: this.handleGuess.bind(this),
       digitNumber: this.digit,
@@ -22,7 +23,7 @@ class App {
       return;
     }
     const result = this.baseball.getResult(values);
-    //insertAdjacentHTML('beforeend'): 자식요소 content 뒤에 DOM 요소 삽입
+    // insertAdjacentHTML('beforeend'): 자식요소 content 뒤에 DOM 요소 삽입
     this.resultsContainerEl.insertAdjacentHTML('beforeend', this.createResultEl(values, result.toString()));
     if (result.isDone()) {
       alert('정답을 맞추었습니다!');

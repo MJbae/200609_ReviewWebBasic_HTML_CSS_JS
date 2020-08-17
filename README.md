@@ -1,5 +1,5 @@
 # 200609_ReviewWebBasic_HTML_CSS_JS
-> 웹기본 학습을 위한 Toy-Projects
+> 웹기본 학습에 따른 Toy-Project 및 개념정리 저장소
 * [200809_BaseballGame 바로가기](#)
 * [200803_GithubCloningProject 바로가기](#)
 * [200720_TodoList 바로가기](#)

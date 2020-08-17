@@ -5,7 +5,7 @@
 * [200720_TodoList 바로가기](#)
 * [200620_PlayGames 바로가기](https://playgames.netlify.app/)
 
-## 개념정리(feat.Notion)
+## 개념정리(feat. Notion)
 * [웹 기본 정리](https://www.notion.so/06a0689343ae43759c0c37dd3d3b9817)
 * [Vanilla JS 정리](https://www.notion.so/Vanilla-JS-01cf36d73b7d47dcba002b9e06168b41)
 * [CSS 개념 정리](https://www.notion.so/CSS-98e7337bfef64930bee03255490892ed)

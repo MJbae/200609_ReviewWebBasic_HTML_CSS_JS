@@ -5,7 +5,8 @@
 ### [200720_TodoList 바로가기](#)
 ### [200620_PlayGames 바로가기](https://playgames.netlify.app/)
 
-
+## 개념정리(feat.Notion)
+* [CSS 개념 정리](https://www.notion.so/CSS-98e7337bfef64930bee03255490892ed)
 
 
 ## 기간

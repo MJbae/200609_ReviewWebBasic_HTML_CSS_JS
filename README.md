@@ -10,9 +10,6 @@
 * [Vanilla JS 정리](https://www.notion.so/Vanilla-JS-01cf36d73b7d47dcba002b9e06168b41)
 * [CSS 개념 정리](https://www.notion.so/CSS-98e7337bfef64930bee03255490892ed)
 
-## 기간
-* '20. 6. 20.(토) ~ 
-
 ## 개발환경
 ### 개발언어
 * Vanilla JS, HTML, CSS

@@ -1,8 +1,8 @@
-let listContents = [
+const listContents = [
   {
     text: "window.screen",
-    height: window.screen.availHeight,
-    width: window.screen.availWidth,
+    height: window.screen.height,
+    width: window.screen.width,
   },
   {
     text: "window.outer",
@@ -12,7 +12,7 @@ let listContents = [
   {
     text: "window.inner",
     height: window.innerHeight,
-    width: window.innerrWidth,
+    width: window.innerWidth,
   },
   {
     text: "DocumentElement.clientWidth",

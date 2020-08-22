@@ -1,3 +1,9 @@
+/**
+ * 구현 못한 것
+ * 1. DocumentElement.clientWidth 값
+ * 2. 브라우저 크기 변경에 따라 값 변경
+ */
+
 const listContents = [
   {
     text: "window.screen",

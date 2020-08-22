@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Window Size</title>
+    <style>
+      .tag {
+        /* 텍스트 주위로 배경을 만들기 위해 */
+        display: inline-block;
+        background-color: thistle;
+        padding: 16px;
+        margin-top: 16px;
+        font-size: 48px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="tag">Window Size</div>
+    <script>
+      function updateTag() {
+        tagDOM.innerHTML = `
+        window.screen: ${window.screen.height} ${window.screen.width} </br>
+        window.outer: ${window.outerHeight} ${window.outerWidth}</br>
+        window.inner: ${window.outerHeight} ${window.outerWidth}</br>
+        DocumentElement.clientWidth: ${document.documentElement.clientHeight} ${document.documentElement.clientWidth}</br>
+        `;
+      }
+
+      const tagDOM = document.querySelector(".tag");
+      window.addEventListener("resize", () => {
+        updateTag();
+      });
+      // 첫 렌더링부터 DOM의 사이즈를 표시
+      updateTag();
+    </script>
+  </body>
+</html>

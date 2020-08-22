@@ -1,0 +1,8 @@
+.listContents {
+  list-style: none;
+}
+.listContainer {
+  padding: 0 50px 0 0;
+  float: left;
+  background-color: rgb(239, 82, 245);
+}

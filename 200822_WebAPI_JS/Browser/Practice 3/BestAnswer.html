@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Scroll</title>
+    <style>
+      body {
+        background-color: black;
+      }
+      div {
+        width: 10vw;
+        height: 10vh;
+        background-color: thistle;
+        padding: 30px;
+        margin-bottom: 10px;
+      }
+      .special {
+        background-color: blue;
+      }
+      /* aside 태그의 기능?  */
+      aside {
+        position: fixed;
+        right: 20px;
+        top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div class="special"></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <aside>
+      <button class="scroll-by">scroll by 100px(y)</button>
+      <button class="scroll-to">scroll to 100px(y)</button>
+      <button class="scroll-into">scroll into special</button>
+    </aside>
+    <script>
+      const special = document.querySelector(".special");
+      special.addEventListener("click", (event) => {
+        const rect = special.getBoundingClientRect();
+        console.log(rect);
+        console.log(`client: ${event.clientX}, ${event.clientY}`);
+        console.log(`page: ${event.pageX}, ${event.pageY}`);
+      });
+
+      const scrollBy = document.querySelector(".scroll-by");
+      const scrollTo = document.querySelector(".scroll-to");
+      const scrollInto = document.querySelector(".scroll-into");
+      scrollBy.addEventListener("click", () => {
+        window.scrollBy({
+          top: 100,
+          left: 0,
+          behavior: "smooth",
+        });
+      });
+      scrollTo.addEventListener("click", () => {
+        window.scrollTo(0, 100);
+      });
+      scrollInto.addEventListener("click", () => {
+        special.scrollIntoView();
+      });
+    </script>
+  </body>
+</html>

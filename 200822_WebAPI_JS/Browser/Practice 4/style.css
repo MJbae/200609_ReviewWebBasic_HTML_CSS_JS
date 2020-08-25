@@ -1,5 +1,6 @@
 body {
   background-color: black;
+  height: 100%;
 }
 .move-image {
   position: absolute;
@@ -9,4 +10,8 @@ body {
 .move-cordinates {
   position: absolute;
   color: aliceblue;
+}
+.vertical {
+  width: 0px;
+  height: 100%;
 }

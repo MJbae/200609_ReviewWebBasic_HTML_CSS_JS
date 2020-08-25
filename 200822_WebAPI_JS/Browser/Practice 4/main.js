@@ -15,7 +15,6 @@ const moveCordinates = document.querySelector(".move-cordinates");
 const moveHorizonLine = document.querySelector(".horizon");
 const moveVerticalLine = document.querySelector(".vertical");
 
-// TODO: clientX와 offsetX의 차이는?
 window.addEventListener("mousemove", (event) => {
   moveImg.style.left = event.clientX - 50 + "px";
   moveImg.style.top = event.clientY - 50 + "px";

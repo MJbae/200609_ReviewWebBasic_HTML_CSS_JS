@@ -1,7 +1,6 @@
 # 200609_ReviewWebBasic_HTML_CSS_JS
 > 웹 기본 학습에 따른 개념정리 및 토이프로젝트
-* [200803_GithubCloningProject 바로가기](#)
-* [200720_TodoList 바로가기](#)
+* [200803_GithubMainPageClone 바로가기](https://gitclone.netlify.app/)
 * [200620_PlayGames 바로가기](https://playgames.netlify.app/)
 
 ## 개념정리(feat. Notion)
